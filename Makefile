@@ -25,19 +25,22 @@ magenta := $(shell tput setaf 5)
 cyan    := $(shell tput setaf 6)
 sgr0    := $(shell tput sgr0)
 
-$(TEST_DIR)/comp_%: $(TEST_DIR)/%.vhd
-	@echo "$(yellow)### Compiling testbench $^$(sgr0)"
-	$(HDL_COMPILER) $^
+$(WORK_DIR):
+	mkdir $(WORK_DIR)
 
-$(SRC_DIR)/comp_%: $(SRC_DIR)/%.vhd
-	@echo "$(red)### Compiling $^$(sgr0)"
-	$(HDL_COMPILER) $^
+$(TEST_DIR)/comp_%: $(TEST_DIR)/%.vhd $(WORK_DIR)
+	@echo "$(yellow)### Compiling testbench $<$(sgr0)"
+	$(HDL_COMPILER) $<
 
-$(LIB_NAME).%: $(SRC_DIR)/comp_% $(TEST_DIR)/comp_%_tb
+$(SRC_DIR)/comp_%: $(SRC_DIR)/%.vhd $(WORK_DIR)
+	@echo "$(red)### Compiling $<$(sgr0)"
+	$(HDL_COMPILER) $<
+
+$(LIB_NAME).%: $(SRC_DIR)/comp_% $(TEST_DIR)/comp_%_tb $(WORK_DIR)
 	@echo "$(green)### Elaborating $(subst $(LIB_NAME).,,$@)_tb$(sgr0)"
 	$(HDL_ELABORATOR) $(subst $(LIB_NAME).,, $@)_tb
 
-sim_%: $(LIB_NAME).%
+sim_%: $(LIB_NAME).% $(WORK_DIR)
 	@echo "$(blue)### Simulating $(subst $(LIB_NAME).,,$<)_tb$(sgr0)"
 	$(HDL_SIM) $(subst $(LIB_NAME).,, $<)_tb $(HDL_SIM_OPTS)
 	
@@ -46,4 +49,4 @@ sim_%: $(LIB_NAME).%
 
 .PHONY: clean
 clean:
-	rm $(WORK_DIR)/*
+	rm -rf $(WORK_DIR)
