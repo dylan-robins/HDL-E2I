@@ -9,35 +9,34 @@ entity MUX2v1_TB is
 end MUX2v1_TB;
 
 architecture str of MUX2v1_TB is
-    constant c_N : Natural := 4; 
+    constant c_N : natural := 4;
 
-    signal clk : std_logic := '0';  
+    signal clk : std_logic := '0';
 
-    -- entrées du mux
-    signal s_A : std_logic_vector(c_N-1 downto 0) := (others=>'0');
-    signal s_B : std_logic_vector(c_N-1 downto 0) := (others=>'1');
+    -- entrÃ©es du mux
+    signal s_A : std_logic_vector(c_N - 1 downto 0) := (others => '0');
+    signal s_B : std_logic_vector(c_N - 1 downto 0) := (others => '1');
     -- sorties du mux
-    signal s_S: std_logic_vector(c_N-1 downto 0);
+    signal s_S : std_logic_vector(c_N - 1 downto 0);
 
     component MUX2v1 is
-        generic (N: Natural := 8);
-        port(
-            D0, D1: in  std_logic_vector(N-1 downto 0);
-            ctrl: in std_logic;
-            S   : out std_logic_vector(N-1 downto 0)
+        generic (N : natural := 8);
+        port (
+            D0, D1 : in std_logic_vector(N - 1 downto 0);
+            ctrl   : in std_logic;
+            S      : out std_logic_vector(N - 1 downto 0)
         );
     end component;
 
-begin 
+begin
     DUT : MUX2v1
-    generic map (N => c_N) -- override la valeur de N par défaut
+    generic map(N => c_N) -- override la valeur de N par dï¿½faut
     port map(
-        D0    => s_A,
-        D1    => s_B,
-        ctrl  => clk,
-        S     => s_S
+        D0   => s_A,
+        D1   => s_B,
+        ctrl => clk,
+        S    => s_S
     );
 
     clk <= not clk after 5 ns;
 end str;
-
