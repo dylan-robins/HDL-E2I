@@ -1,4 +1,5 @@
 STOP_TIME := 100ns
+OPEN_VIEWER := 1
 
 SRC_DIR := ./src
 TEST_DIR := ./test
@@ -8,7 +9,7 @@ LIB_NAME := tp_lib
 
 SIM_FILE := $(WORK_DIR)/$(LIB_NAME).ghw
 
-HDL_OPTS     := --workdir=$(WORK_DIR) --work=$(LIB_NAME) --ieee=synopsys 
+HDL_OPTS     := --workdir=$(WORK_DIR) --work=$(LIB_NAME) --ieee=synopsys -fexplicit --std=08
 HDL_SIM_OPTS := --wave=$(SIM_FILE) --stop-time=$(STOP_TIME)
 
 HDL_COMPILER   := ghdl -a $(HDL_OPTS)

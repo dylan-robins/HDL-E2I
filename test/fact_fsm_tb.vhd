@@ -1,10 +1,10 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity factorielle_tb is
-end factorielle_tb;
+entity FACT_FSM_TB is
+end FACT_FSM_TB;
 
-architecture str of factorielle_tb is
+architecture str of FACT_FSM_TB is
 	signal clk        : std_logic := '0';
 	signal s_nrst     : std_logic := '1';
 	signal s_start    : std_logic := '0';
@@ -15,7 +15,7 @@ architecture str of factorielle_tb is
 	signal s_decount  : std_logic := '0';
 	signal s_Output   : std_logic := '0';
 
-	component FACT is
+	component FACT_FSM is
 		port (
 			clk      : in std_logic;
 			nrst     : in std_logic;
@@ -30,7 +30,7 @@ architecture str of factorielle_tb is
 	end component;
 
 begin
-	DUT : FACT
+	DUT : FACT_FSM
 	port map(
 		clk      => clk,
 		nrst     => s_nrst,
@@ -48,15 +48,15 @@ begin
 	-- STIMULI
 	-- Test Simple
 	s_start <=
-		-- Idle => Start => Output
-		'1' after 10 ns, '0' after 20 ns,
-		-- Idle => Start => Prod => Decrement => Output
-		'1' after 60 ns, '0' after 70 ns;
+	-- Idle => Start => Output
+	'1' after 10 ns, '0' after 20 ns,
+	-- Idle => Start => Prod => Decrement => Output
+	'1' after 60 ns, '0' after 70 ns;
 	s_supa1 <=
-		-- Idle => Start => Output
-		-- Rien à faire
-		-- Idle => Start => Prod => Decrement => Output
-		'1' after 70 ns, '0' after 100 ns;
+	-- Idle => Start => Output
+	-- Rien à faire
+	-- Idle => Start => Prod => Decrement => Output
+	'1' after 70 ns, '0' after 100 ns;
 	s_nrst <=
-		'0' after 40 ns, '1' after 50 ns;
+	'0' after 40 ns, '1' after 50 ns;
 end str;

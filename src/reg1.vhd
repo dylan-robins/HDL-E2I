@@ -12,20 +12,24 @@ entity REG1 is
 end REG1;
 
 architecture df1 of REG1 is
+    signal buf : std_logic := '0';
 begin
     process (CLK, nRST)
     begin
-        if (nRST = '0')
-            -- REST LOGIC
-            then
-            Q <= '0';
-        elsif (CLK'event and CLK = '1')
-            then
-            if (LD = '1')
+        if (nRST = '0') then
+            -- RESET LOGIC
+            buf <= '0';
+        elsif (CLK'event and CLK = '1') then
+            if (LD = '1') then
                 -- LOAD LOGIC
-                then
-                Q <= D;
+                buf <= D;
+            else
+                buf <= buf;
             end if;
+        else
+            buf <= buf;
         end if;
     end process;
+
+    Q <= buf;
 end architecture df1;

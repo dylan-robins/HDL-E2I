@@ -19,7 +19,7 @@ end CNTR;
 
 architecture dfl of CNTR is
 	-- Internal counter buffer
-	signal counter : std_logic_vector(N - 1 downto 0);
+	signal counter : std_logic_vector(N - 1 downto 0) := (others => '0');
 begin
 	-- Map output to internal counter buffer
 	Q <= counter;
@@ -32,11 +32,11 @@ begin
 				then
 				-- PRELOAD LOGIC
 				counter <= D;
-			else
+				else
 				-- RESET LOGIC
 				counter <= (others => '0');
 			end if;
-		elsif (CLK'event and CLK = '1')
+			elsif (CLK'event and CLK = '1')
 			-- COUNTER LOGIC
 			then
 			-- only run counter if EN is '1'
@@ -45,13 +45,13 @@ begin
 				if (UD = '0')
 					then
 					counter <= counter + '1';
-				else
+					else
 					counter <= counter - '1';
 				end if;
-			else
+				else
 				counter <= counter;
 			end if;
-		else
+			else
 			counter <= counter;
 		end if;
 	end process;

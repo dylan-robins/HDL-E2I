@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all; -- for math operations on std_logic_vector
 use ieee.numeric_std.all;        --utilisation to_unsigned
 
-entity FACT is
+entity FACT_FSM is
 	port (
 		clk      : in std_logic;
 		nrst     : in std_logic;
@@ -15,9 +15,9 @@ entity FACT is
 		decount  : out std_logic;
 		Output   : out std_logic
 	);
-end FACT;
+end FACT_FSM;
 
-architecture FACT_arch of FACT is
+architecture FACT_arch of FACT_FSM is
 	type Etats is (SIdle, SStart, SProd, SDecrement, SOutput);
 	signal etat_c, etat_s : Etats;
 	signal s_etat_courant : std_logic_vector(3 downto 0);
@@ -82,7 +82,7 @@ begin
 	begin
 		if (nrst = '0') then
 			etat_c <= SIdle;
-		elsif (clk'event and clk = '1') then
+			elsif (clk'event and clk = '1') then
 			etat_c         <= etat_s;
 			s_etat_courant <= std_logic_vector(to_unsigned(Etats'POS(etat_s), s_etat_courant'length)); --Affichage de l'état du signal courant avec GHDL
 		end if;
