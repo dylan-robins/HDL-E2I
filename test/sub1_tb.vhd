@@ -3,10 +3,10 @@ use ieee.std_logic_1164.all;
 library TP_LIB;
 use TP_LIB.SUB1;
 
-entity SUB_TB is
-end SUB_TB;
+entity SUB1_TB is
+end SUB1_TB;
 
-architecture str of SUB_TB is
+architecture str of SUB1_TB is
     signal sA, sB, sCin : std_logic := '0';
     signal sCout, s_s   : std_logic;
     component SUB1 is

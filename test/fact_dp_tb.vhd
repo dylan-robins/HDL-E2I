@@ -6,10 +6,10 @@ use ieee.numeric_std.all;        --utilisation to_unsigned
 library TP_LIB;
 use TP_LIB.FACT_DP;
 
-entity FACT_DATAPATH_TB is
-end FACT_DATAPATH_TB;
+entity FACT_DP_TB is
+end FACT_DP_TB;
 
-architecture str of FACT_DATAPATH_TB is
+architecture str of FACT_DP_TB is
     constant N : natural := 8;
 
     signal s_clk      : std_logic                        := '0';
