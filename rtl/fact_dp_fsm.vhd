@@ -4,7 +4,7 @@ use ieee.std_logic_unsigned.all; -- for math operations on std_logic_vector
 use ieee.numeric_std.all;        --utilisation to_unsigned
 
 library TP_LIB;
-use TP_LIB.FACT_DATAPATH;
+use TP_LIB.FACT_DP;
 use TP_LIB.FACT_FSM;
 
 entity FACT_DP_FSM is
@@ -27,7 +27,7 @@ architecture str of FACT_DP_FSM is
     signal s_output   : std_logic;
     signal s_supa1    : std_logic;
 
-    component FACT_DATAPATH is
+    component FACT_DP is
         generic (N : natural);
         port (
             clk      : in std_logic;
@@ -58,7 +58,7 @@ architecture str of FACT_DP_FSM is
     end component;
 
 begin
-    DP : FACT_DATAPATH
+    DP : FACT_DP
     generic map(N => N)
     port map(
         clk      => clk,

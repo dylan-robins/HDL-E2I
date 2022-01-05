@@ -146,5 +146,5 @@ begin
     );
 
     Q <= s_regX_out when gcd = '1' else
-    (others => 'Z');
+        (others => 'Z');
 end architecture;

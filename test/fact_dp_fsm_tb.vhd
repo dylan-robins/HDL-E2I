@@ -49,21 +49,21 @@ begin
 	-- Calcul fact(1)
 	std_logic_vector(to_unsigned(1, N)) after 0 ns,
 	-- Calcul fact(3)
-	std_logic_vector(to_unsigned(3, N)) after 40 ns,
+	std_logic_vector(to_unsigned(3, N)) after 70 ns,
 	-- Calcul fact(5)
-	std_logic_vector(to_unsigned(5, N)) after 130 ns;
+	std_logic_vector(to_unsigned(5, N)) after 180 ns;
 
 	s_start <=
 	-- Calcul fact(1)
 	'1' after 10 ns, '0' after 20 ns,
 	-- Calcul fact(3)
-	'1' after 40 ns, '0' after 50 ns,
+	'1' after 70 ns, '0' after 80 ns,
 	-- Calcul fact(3)
-	'1' after 130 ns, '0' after 140 ns;
+	'1' after 180 ns, '0' after 190 ns;
 
 	s_nrst <=
 	-- Entre fact(1) et fact(3)
-	'0' after 30 ns, '1' after 40 ns,
+	'0' after 50 ns, '1' after 60 ns,
 	-- Entre fact(3) et fact(5)
-	'0' after 120 ns, '1' after 130 ns;
+	'0' after 170 ns, '1' after 180 ns;
 end str;

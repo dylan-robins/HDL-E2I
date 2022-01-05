@@ -9,7 +9,7 @@ entity alarm is
 		nrst       : in std_logic;
 		verrouille : in std_logic;
 		porte      : in std_logic;
-		force      : in std_logic;
+		forcee     : in std_logic;
 		sirene     : out std_logic
 	);
 end alarm;
@@ -21,12 +21,12 @@ architecture alarm_arch of alarm is
 
 begin
 	-- PROCESS COMBINATOIRE
-	process (etat_c, verrouille, porte, force)
+	process (etat_c, verrouille, porte, forcee)
 	begin
 		case etat_c is
 			when SAlarm_ON =>
 				sirene <= '0';
-				if (porte = '1' or force = '1') then
+				if (porte = '1' or forcee = '1') then
 					etat_s <= SAlarm_Sonne;
 				elsif (verrouille = '0') then
 					etat_s <= SAlarm_OFF;

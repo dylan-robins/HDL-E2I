@@ -9,7 +9,7 @@ use TP_LIB.MULTN;
 use TP_LIB.COMPN;
 use TP_LIB.MUX2v1;
 
-entity FACT_DATAPATH is
+entity FACT_DP is
     generic (N : natural := 32);
     port (
         clk      : in std_logic;
@@ -23,9 +23,9 @@ entity FACT_DATAPATH is
         Q        : out std_logic_vector(N - 1 downto 0); -- data out
         supa1    : out std_logic                         -- flag N > 1
     );
-end FACT_DATAPATH;
+end FACT_DP;
 
-architecture str of FACT_DATAPATH is
+architecture str of FACT_DP is
     signal cntr_mult : std_logic_vector(N - 1 downto 0);
     signal reg_mult  : std_logic_vector(N - 1 downto 0);
     signal mult_mux  : std_logic_vector(2 * N - 1 downto 0);
@@ -132,6 +132,6 @@ begin
     );
 
     Q <= reg_mult when output = '1' else
-    (others => 'Z');
+        (others => 'Z');
     cntr_nrst <= nrst and not loadCnt;
 end architecture;

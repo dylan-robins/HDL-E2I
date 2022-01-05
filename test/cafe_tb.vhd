@@ -2,6 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all; -- for math operations on std_logic_vector
 
+library TP_LIB;
+use TP_LIB.CAFE;
+
 entity cafe_tb is
 end cafe_tb;
 

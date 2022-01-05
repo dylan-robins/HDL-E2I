@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library TP_LIB;
+use TP_LIB.PGCD;
+
 entity PGCD_tb is
 end PGCD_tb;
 

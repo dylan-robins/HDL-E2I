@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library TP_LIB;
+use TP_LIB.FACT_FSM;
+
 entity FACT_FSM_TB is
 end FACT_FSM_TB;
 
@@ -48,15 +51,15 @@ begin
 	-- STIMULI
 	-- Test Simple
 	s_start <=
-	-- Idle => Start => Output
-	'1' after 10 ns, '0' after 20 ns,
-	-- Idle => Start => Prod => Decrement => Output
-	'1' after 60 ns, '0' after 70 ns;
+		-- Idle => Start => Output
+		'1' after 10 ns, '0' after 20 ns,
+		-- Idle => Start => Prod => Decrement => Output
+		'1' after 60 ns, '0' after 70 ns;
 	s_supa1 <=
-	-- Idle => Start => Output
-	-- Rien à faire
-	-- Idle => Start => Prod => Decrement => Output
-	'1' after 70 ns, '0' after 100 ns;
+		-- Idle => Start => Output
+		-- Rien à faire
+		-- Idle => Start => Prod => Decrement => Output
+		'1' after 70 ns, '0' after 100 ns;
 	s_nrst <=
-	'0' after 40 ns, '1' after 50 ns;
+		'0' after 40 ns, '1' after 50 ns;
 end str;

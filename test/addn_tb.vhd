@@ -46,6 +46,6 @@ begin
                 then
                 s_B <= s_B + 1;
             end if;
-        end
+        end if;
     end process;
 end str;

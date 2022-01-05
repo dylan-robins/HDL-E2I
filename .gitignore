@@ -1,1 +1,5 @@
 work/
+**.vcd
+**.ghw
+**/__pycache__/
+*.pyc
