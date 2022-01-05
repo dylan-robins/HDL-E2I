@@ -8,13 +8,13 @@ This is a repository containing all the HDL designs I’ve written for my VHDL a
 
 - **GHDL** v1.0.0: HDL compiler/simulator
 - **GTKWave** v3.3.104: waveform visualizer
-- **python** v3.7+: interpreter for custom build script
+- **python** v3.7-3.10.1: interpreter for custom build script
 
 ## Simulating the designs
 
-The available testbenches are listed in the `test/` directory. You can compile and simulate them by running `make sim_<device-name>`. This will compile the required files, elaborate the modules, run the simulation and open the generated signal traces in GTKWave.
+The available testbenches are listed in the `test/` directory. You can compile and simulate them by running `./make.py <entity_name>`. This will compile the required files, elaborate the modules and run the simulation.
 
-You can set the simulation length by setting `STOP_TIME=<duration>` in the make call.
+You can set the simulation length by setting `--stop_time <duration>` option, and using `--gui` will attempt to open the generated wave file in GTKWave.
 
 ## Authors
 
