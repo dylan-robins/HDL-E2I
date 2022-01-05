@@ -8,7 +8,7 @@ This is a repository containing all the HDL designs I’ve written for my VHDL a
 
 - **GHDL** v1.0.0: HDL compiler/simulator
 - **GTKWave** v3.3.104: waveform visualizer
-- **GNU make** v4.3: build system
+- **python** v3.7+: interpreter for custom build script
 
 ## Simulating the designs
 
@@ -23,4 +23,4 @@ You can set the simulation length by setting `STOP_TIME=<duration>` in the make 
 
 ## License
 
-This project is licensed under the WTFPL licence - see the [LICENSE](https://github.com/dylan-robins/programmation-E2I3/blob/master/LICENCE) file for details.
+This project is licensed under the WTFPL licence - see the [LICENSE](https://github.com/dylan-robins/HDL-E2I/blob/main/LICENCE) file for details.
